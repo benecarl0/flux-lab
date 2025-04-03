@@ -1,0 +1,26 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-testing
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: wp_funcionando
+  url: https://github.com/benecarl0/flux-lab
+  secretRef:
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-testing
+  namespace: flux-system
+spec:
+  interval: 5m
+  path: ./clusters/testing-cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-testing
+    namespace: flux-system
