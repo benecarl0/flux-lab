@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wordpress
+  namespace: front-helm
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: wordpress
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: frontend
+      version: 21.0.0
+  values:
+    mariadb:
+      enabled: false
+    externalDatabase:
+      host: mariadb.backend.svc.cluster.local
+      user: wp_user
+      password: wp_pass
+      database: wordpress
