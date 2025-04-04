@@ -11,13 +11,13 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
-        namespace: frontend
+        namespace: front-helm
       version: 21.0.0
   values:
     mariadb:
       enabled: false
     externalDatabase:
-      host: mariadb.backend.svc.cluster.local
+     host: mariadb.back-helm.svc.cluster.local
       user: wp_user
       password: wp_pass
       database: wordpress
