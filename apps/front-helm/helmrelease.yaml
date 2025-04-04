@@ -17,7 +17,7 @@ spec:
     mariadb:
       enabled: false
     externalDatabase:
-     host: mariadb.back-helm.svc.cluster.local
+      host: mariadb.back-helm.svc.cluster.local
       user: wp_user
       password: wp_pass
       database: wordpress
